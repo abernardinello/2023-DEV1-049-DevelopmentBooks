@@ -17,27 +17,25 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
 
         Float total = 0f;
 
-        if (!CollectionUtils.isEmpty(shoppingBasket)) {
+        while (!CollectionUtils.isEmpty(shoppingBasket)) {
+            Float subTotal = 0f;
+            Set<Book> subBasket = new HashSet<>();
+            shoppingBasket = shoppingBasket.stream().filter(n -> !subBasket.add(n)).collect(Collectors.toList());
 
-            while (!shoppingBasket.isEmpty()) {
-                Float subTotal = 0f;
-                Set<Book> subBasket = new HashSet<>();
-                shoppingBasket = shoppingBasket.stream().filter(n -> !subBasket.add(n)).collect(Collectors.toList());
+            subTotal = subBasket.stream().map(b -> b.getPrice()).reduce((b1, b2) -> b1 + b2).get();
 
-                subTotal = subBasket.stream().map(b -> b.getPrice()).reduce((b1, b2) -> b1 + b2).get();
-
-                if (subBasket.size() == 2) {
-                    subTotal *= 0.95f;
-                } else if (subBasket.size() == 3) {
-                    subTotal *= 0.9f;
-                } else if (subBasket.size() == 4) {
-                    subTotal *= 0.8f;
-                } else if (subBasket.size() == 5) {
-                    subTotal *= 0.75f;
-                }
-                total += subTotal;
+            if (subBasket.size() == 2) {
+                subTotal *= 0.95f;
+            } else if (subBasket.size() == 3) {
+                subTotal *= 0.9f;
+            } else if (subBasket.size() == 4) {
+                subTotal *= 0.8f;
+            } else if (subBasket.size() == 5) {
+                subTotal *= 0.75f;
             }
+            total += subTotal;
         }
+
         return total;
     }
 
