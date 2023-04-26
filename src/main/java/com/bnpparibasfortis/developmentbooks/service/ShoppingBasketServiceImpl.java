@@ -20,8 +20,10 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
 
             if (shoppingBasket.size() == 2) {
                 total *= 0.95f;
-            } else if(shoppingBasket.size() == 3) {
+            } else if (shoppingBasket.size() == 3) {
                 total *= 0.9f;
+            } else if (shoppingBasket.size() == 4) {
+                total *= 0.85f;
             }
 
         }
