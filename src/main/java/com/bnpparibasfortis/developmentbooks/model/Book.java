@@ -1,5 +1,11 @@
 package com.bnpparibasfortis.developmentbooks.model;
 
-public class Book {
+import lombok.Data;
 
+@Data
+public class Book {
+    private final String title;
+    private final String author;
+    private final String year;
+    private final Integer price;
 }
