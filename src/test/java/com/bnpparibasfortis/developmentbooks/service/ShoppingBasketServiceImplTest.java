@@ -94,4 +94,16 @@ public class ShoppingBasketServiceImplTest {
                 (book.getPrice() + book2.getPrice() + book3.getPrice() + book4.getPrice() + book5.getPrice()) * 0.75f,
                 price);
     }
+
+    @Test
+    public void givenShoppingBasketWithMoreThan1SameBooks_whenComputePrice_thenReturnPriceWithNoDiscount() {
+        Book book = new Book("Clean Code", "Robert Martin", "2008");
+        Book book2 = new Book("Clean Code", "Robert Martin", "2008");
+
+        SHOPPING_CART.add(book);
+        SHOPPING_CART.add(book2);
+
+        Float price = service.computePrice(SHOPPING_CART);
+        Assertions.assertEquals(book.getPrice() + book2.getPrice(), price);
+    }
 }
