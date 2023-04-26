@@ -91,7 +91,7 @@ public class ShoppingBasketServiceImplTest {
         SHOPPING_CART.add(book5);
         Float price = service.computePrice(SHOPPING_CART);
         Assertions.assertEquals(
-                (book.getPrice() + book2.getPrice() + book3.getPrice() + book4.getPrice() + book5.getPrice()) * 0.8f,
+                (book.getPrice() + book2.getPrice() + book3.getPrice() + book4.getPrice() + book5.getPrice()) * 0.75f,
                 price);
     }
 }
