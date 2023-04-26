@@ -76,6 +76,22 @@ public class ShoppingBasketServiceImplTest {
         Assertions.assertEquals((book.getPrice() + book2.getPrice() + book3.getPrice() + book4.getPrice()) * 0.8f,
                 price);
     }
-    
 
+    @Test
+    public void givenShoppingBasketWith5DifferentBooks_whenComputePrice_thenReturnPriceWith25PercentDiscount() {
+        Book book = new Book("Clean Code", "Robert Martin", "2008");
+        Book book2 = new Book("The Clean Coder", "Robert Martin", "2011");
+        Book book3 = new Book("Clean Architecture", "Robert Martin", "2017");
+        Book book4 = new Book("Test Driven Development by Example", "Kent Beck", "2003");
+        Book book5 = new Book("Working Effectively With Legacy Code", "Michael C. Feathers", "2004");
+        SHOPPING_CART.add(book);
+        SHOPPING_CART.add(book2);
+        SHOPPING_CART.add(book3);
+        SHOPPING_CART.add(book4);
+        SHOPPING_CART.add(book5);
+        Float price = service.computePrice(SHOPPING_CART);
+        Assertions.assertEquals(
+                (book.getPrice() + book2.getPrice() + book3.getPrice() + book4.getPrice() + book5.getPrice()) * 0.8f,
+                price);
+    }
 }
