@@ -11,6 +11,19 @@ import com.bnpparibasfortis.developmentbooks.model.Book;
 public class ShoppingBasketServiceImpl implements ShoppingBasketService {
     @Override
     public Float computePrice(List<Book> shoppingBasket) {
-        return CollectionUtils.isEmpty(shoppingBasket) ? 0f : shoppingBasket.stream().map(b -> b.getPrice()).reduce((b1,b2)-> b1+b2).get();
+
+        Float total = 0f;
+
+        if (!CollectionUtils.isEmpty(shoppingBasket)) {
+
+            total = shoppingBasket.stream().map(b -> b.getPrice()).reduce((b1, b2) -> b1 + b2).get();
+
+            if (shoppingBasket.size() == 2) {
+                total *= 0.95f;
+            }
+
+        }
+        return total;
     }
+
 }
