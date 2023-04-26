@@ -24,6 +24,8 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
                 total *= 0.9f;
             } else if (shoppingBasket.size() == 4) {
                 total *= 0.8f;
+            } else if (shoppingBasket.size() == 5) {
+                total *= 0.75f;
             }
 
         }
