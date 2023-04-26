@@ -25,10 +25,18 @@ public class ShoppingBasketServiceImplTest {
         Float price = service.computePrice(SHOPPING_CART);
         Assertions.assertEquals(0f, price);
     }
-    
+
     @Test
     public void givenNullShoppingBasket_whenComputePrice_thenReturnZero() {
         Float price = service.computePrice(null);
         Assertions.assertEquals(0f, price);
+    }
+
+    @Test
+    public void givenShoppingBasketWith1Book_whenComputePrice_thenReturnPriceOfTheBook() {
+        Book book = new Book("Clean Code", "Robert Martin", "2008");
+        SHOPPING_CART.add(book);
+        Float price = service.computePrice(SHOPPING_CART);
+        Assertions.assertEquals(book.getPrice(), price);
     }
 }
