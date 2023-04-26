@@ -21,8 +21,14 @@ public class ShoppingBasketServiceImplTest {
     }
 
     @Test
-    public void givenEmtyShoppingCart_whenComputePrice_thenReturnZero() {
+    public void givenEmtyShoppingBasket_whenComputePrice_thenReturnZero() {
         Float price = service.computePrice(SHOPPING_CART);
+        Assertions.assertEquals(0f, price);
+    }
+    
+    @Test
+    public void givenNullShoppingBasket_whenComputePrice_thenReturnZero() {
+        Float price = service.computePrice(null);
         Assertions.assertEquals(0f, price);
     }
 }
