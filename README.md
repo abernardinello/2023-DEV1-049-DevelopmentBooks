@@ -2,6 +2,7 @@
 
 Kata for bnp interview.
 
+The simplest calculation has been chosen, the result does not necessarily give the most advantageous price for the customer.
 
 # Dependencies
 
