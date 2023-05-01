@@ -9,17 +9,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import com.bnpparibasfortis.developmentbooks.model.Book;
+import com.bnpparibasfortis.developmentbooks.model.Item;
 
 @Service
 public class ShoppingBasketServiceImpl implements ShoppingBasketService {
     @Override
-    public Float computePrice(List<Book> shoppingBasket) {
+    public Float computePrice(List<Item> shoppingBasket) {
 
         Float total = 0f;
 
         while (!CollectionUtils.isEmpty(shoppingBasket)) {
             Float subTotal = 0f;
-            Set<Book> subBasket = new HashSet<>();
+            Set<Item> subBasket = new HashSet<>();
             shoppingBasket = shoppingBasket.stream().filter(n -> !subBasket.add(n)).collect(Collectors.toList());
 
             subTotal = subBasket.stream().map(b -> b.getPrice()).reduce((b1, b2) -> b1 + b2).get();

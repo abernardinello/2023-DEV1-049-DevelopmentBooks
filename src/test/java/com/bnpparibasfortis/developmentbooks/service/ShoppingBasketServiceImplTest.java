@@ -8,12 +8,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.bnpparibasfortis.developmentbooks.model.Book;
+import com.bnpparibasfortis.developmentbooks.model.Item;
 
 public class ShoppingBasketServiceImplTest {
 
     private ShoppingBasketServiceImpl service = new ShoppingBasketServiceImpl();
 
-    private List<Book> SHOPPING_CART;
+    private List<Item> SHOPPING_CART;
 
     @BeforeEach
     public void initEach() {
@@ -147,22 +148,22 @@ public class ShoppingBasketServiceImplTest {
     }
 
     private Book getTDDByExcampleBook() {
-        return new Book("Test Driven Development by Example", "Kent Beck", "2003");
+        return new Book("Test Driven Development by Example", "Kent Beck", "2003", 50.0f);
     }
 
     private Book getCleanArchitectureBook() {
-        return new Book("Clean Architecture", "Robert Martin", "2017");
+        return new Book("Clean Architecture", "Robert Martin", "2017", 50.0f);
     }
 
     private Book getCleanCoderBook() {
-        return new Book("The Clean Coder", "Robert Martin", "2011");
+        return new Book("The Clean Coder", "Robert Martin", "2011", 50.0f);
     }
 
     private Book getCleanCodeBook() {
-        return new Book("Clean Code", "Robert Martin", "2008");
+        return new Book("Clean Code", "Robert Martin", "2008", 50.0f);
     }
 
     private Book getWorkingEffectivelyWithLegacyCodeBook() {
-        return new Book("Working Effectively With Legacy Code", "Michael C. Feathers", "2004");
+        return new Book("Working Effectively With Legacy Code", "Michael C. Feathers", "2004", 50.0f);
     }
 }
